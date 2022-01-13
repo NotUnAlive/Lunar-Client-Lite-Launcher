@@ -116,12 +116,11 @@ Gui, Color, %Background%, %Control%
 Gui, Add, Tab3, w490 h385 x6 Top +Background +0x400 -TabStop, %Home%|%Settings%|Java|%About%
 Gui, Font, s8
 Gui, Add, Picture, x8 y32, Resources/Banner.png
-Gui, Add, Picture, x-8 y60, Resources/Background.png
+Gui, Add, Picture, x-8 y250 +Background, Resources/Background.png
 IniRead, GUIArguments, Config.ini, LC, Arguments
 Gui, Tab, 1
 Gui, Font, s10
 Gui, Add, Picture, x196 y340 w108 h38 gLaunch vLaunchButton, Resources/Launch.png
-Gui, Add, Picture, 
 Gui, Add, Button, x0 y0 w0 h0 gLaunch +default vLaunch
 Gui, Add, DropDownList, x196 y315 w108 h40 vVersionList gVersionWrite c30 r5, 1.7|1.8|1.12|1.16|1.17
 VersionRead()
