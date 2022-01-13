@@ -120,8 +120,9 @@ IniRead, GUIArguments, Config.ini, LC, Arguments
 Gui, Tab, 1
 Gui, Font, s10
 Gui, Add, Picture, x196 y340 w108 h38 gLaunch vLaunchButton, Resources/Launch.png
+Gui, Add, Picture, 
 Gui, Add, Button, x0 y0 w0 h0 gLaunch +default vLaunch
-Gui, Font, s8
+Gui, Add, Picture, x300 y400, Resources/Banner Background.jpg
 Gui, Add, DropDownList, x196 y315 w108 h40 vVersionList gVersionWrite c30 r5, 1.7|1.8|1.12|1.16|1.17
 VersionRead()
 
