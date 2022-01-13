@@ -25,27 +25,6 @@ If (Lang = "English"){
 	LangUIFile=englishui.txt
 	Format=.
 }
-Else If (Lang = "French"){
-	LangFile=french.txt
-	LangUIFile=frenchui.txt
-}
-Else If (Lang = "Arabic"){
-	LangFile=arabic.txt
-	LangUIFile=arabicui.txt
-}
-Else If (Lang = "Georgian"){
-	LangFile=georgian.txt
-	LangUIFile=georgianui.txt
-	Format="'ის"
-}
-Else If (Lang = "Spanish"){
-	LangFile=spanish.txt
-	LangUIFile=spanishui.txt
-}
-Else If (Lang="Chinese"){
-	LangFile=chinese.txt
-	LangUIFile=chineseui.txt
-}
 FileEncoding, UTF-8
 
 ;Command Line Arguments
@@ -203,7 +182,7 @@ Gui, Add, Button, gReset, %Reset%
 Gui, Add, Text,, %OTLF%
 Gui, Add, Button, gLogs, %Open%
 Gui, Add, Text,, %Language%:
-Gui, Add, DropDownList, vLang gLang, Arabic|Chinese|English|French|Georgian|Spanish
+Gui, Add, DropDownList, vLang gLang, English
 LangSelect()
 Gui, Show, w500 h400, Lunar Client Lite
 GuiControl, Focus, Launch
@@ -214,21 +193,6 @@ Launch() {
 	IniRead, Lang, Config.ini, Language, Language
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
-	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
 	}
 	GuiControl,, LaunchButton, Resources/Launch_Clicked.png
 	Sleep, 75
@@ -270,24 +234,9 @@ Launch() {
 
 LangSelect(){
 IniRead, Lang, Config.ini, Language, Language
-If (Lang = "Arabic"){
+If (Lang = "English"){
 	GuiControl, Choose, Lang, 1
 }	
-Else If (Lang = "Chinese"){
-	GuiControl, Choose, Lang, 2
-}
-Else If (Lang = "English"){
-	GuiControl, Choose, Lang, 3
-}
-Else If (Lang = "French"){
-	GuiControl, Choose, Lang, 4
-}
-Else If (Lang = "Georgian"){
-	GuiControl, Choose, Lang, 5
-}
-Else If (Lang = "Spanish"){
-	GuiControl, Choose, Lang, 6
-}
 }
 
 LauncherMSA(){
@@ -350,29 +299,9 @@ Resources() {
 		
 	IfNotExist, Resources\lang\english.txt
 		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/english.txt, Resources/lang/english.txt
-	IfNotExist, Resources\lang\arabic.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/arabic.txt, Resources/lang/arabic.txt
-	IfNotExist, Resources\lang\french.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/french.txt, Resources/lang/french.txt
-	IfNotExist, Resources\lang\georgian.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/georgian.txt, Resources/lang/georgian.txt		
-	IfNotExist, Resources\lang\chinese.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/chinese.txt, Resources/lang/chinese.txt
-	IfNotExist, Resources\lang\spanish.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/spanish.txt, Resources/lang/spanish.txt
-		
+			
 	IfNotExist, Resources\lang\englishui.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/englishui.txt, Resources/lang/englishui.txt
-	IfNotExist, Resources\lang\arabicui.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/arabicui.txt, Resources/lang/arabicui.txt
-	IfNotExist, Resources\lang\frenchui.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/frenchui.txt, Resources/lang/frenchui.txt
-	IfNotExist, Resources\lang\georgianui.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/georgianui.txt, Resources/lang/georgianui.txt
-	IfNotExist, Resources\lang\chineseui.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/chineseui.txt, Resources/lang/chineseui.txt
-	IfNotExist, Resources\lang\spanishui.txt
-		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/spanishui.txt, Resources/lang/spanishui.txt	
+		URLDownloadToFile, https://raw.githubusercontent.com/Aetopia/Lunar-Client-Lite-Launcher/main/Resources/lang/englishui.txt, Resources/lang/englishui.txt	
 }
 
 VersionWrite() {
@@ -420,21 +349,7 @@ LCCheck() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}
+
 	FileReadLine, ErrorLC1, Resources/lang/%LangUIFile%, 6
 	FileReadLine, ErrorLC2, Resources/lang/%LangUIFile%, 7
 	FileReadLine, ErrorLC3, Resources/lang/%LangUIFile%, 8
@@ -464,21 +379,7 @@ LCNotExist() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}
+	
 	FileReadLine, NotExistLCL1, Resources/lang/%LangUIFile%, 10
 	FileReadLine, NotExistLCL2, Resources/lang/%LangUIFile%, 11
 	FileReadLine, NotExistLCL3, Resources/lang/%LangUIFile%, 12
@@ -531,21 +432,7 @@ FileCheck(n) {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}
+	
 	EnvGet, vHomeDrive, HOMEDRIVE
 	EnvGet, vHomePath, HOMEPATH
 	UserProfile=% vHomeDrive vHomePath
@@ -604,21 +491,7 @@ PathConfig() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}
+	
 	FileReadLine, SelectDirectory, Resources/lang/%LangUIFile%, 16
 	GuiControl,, 17Select, Resources/Edit_Clicked.png
 	Sleep, 100
@@ -636,21 +509,7 @@ PathConfig() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}	
+	
 	FileReadLine, SelectDirectory, Resources/lang/%LangUIFile%, 16
 	GuiControl,, 18Select, Resources/Edit_Clicked.png
 	Sleep, 100
@@ -669,21 +528,7 @@ PathConfig() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}	
+		
 	FileReadLine, SelectDirectory, Resources/lang/%LangUIFile%, 16
 	GuiControl,, 112Select, Resources/Edit_Clicked.png
 	Sleep, 100
@@ -702,21 +547,7 @@ PathConfig() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}	
+		
 	FileReadLine, SelectDirectory, Resources/lang/%LangUIFile%, 16
 	GuiControl,, 116Select, Resources/Edit_Clicked.png
 	Sleep, 100
@@ -734,21 +565,7 @@ PathConfig() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}
+	
 	FileReadLine, SelectDirectory, Resources/lang/%LangUIFile%, 16
 	GuiControl,, 117Select, Resources/Edit_Clicked.png
 	Sleep, 100
@@ -767,21 +584,7 @@ Save() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}	
+		
 	FileReadLine, SaveText1, Resources/lang/%LangUIFile%, 17
 	FileReadLine, SaveText2, Resources/lang/%LangUIFile%, 18
 	GuiControl,, Save, Resources/Save_Settings_Clicked.png
@@ -807,21 +610,7 @@ SaveJVMArguments() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}	
+		
 	FileReadLine, SaveText1, Resources/lang/%LangUIFile%, 17
 	FileReadLine, SaveText2, Resources/lang/%LangUIFile%, 18
 	GuiControl,, SaveJVMArguments, Resources/Save_JVMArguments_Clicked.png
@@ -839,21 +628,7 @@ JRESelect() {
 	If (Lang = "English"){
 		LangUIFile=englishui.txt
 	}
-	Else If (Lang = "French"){
-		LangUIFile=frenchui.txt
-	}
-	Else If (Lang = "Arabic"){
-		LangUIFile=arabicui.txt
-	}
-	Else If (Lang = "Georgian"){
-		LangUIFile=georgianui.txt
-	}
-	Else If (Lang = "Spanish"){
-		LangUIFile=spanishui.txt
-	}
-	Else If (Lang = "Chinese"){
-		LangUIFile=chineseui.txt
-	}	
+	
 	FileReadLine, Java1, Resources/lang/%LangUIFile%, 19
 	FileReadLine, Java2, Resources/lang/%LangUIFile%, 20
 	GuiControl,, JRESelect, Resources/Edit_Clicked.png
