@@ -116,7 +116,7 @@ Gui, Color, %Background%, %Control%
 Gui, Add, Tab3, w490 h385 x6 Top +Background +0x400 -TabStop, %Home%|%Settings%|Java|%About%
 Gui, Font, s8
 Gui, Add, Picture, x8 y32, Resources/Banner.png
-Gui, Add, Picture, x196 y32 Resources/BannerII.png
+Gui, Add, Picture, x40 y32 Resources/BannerII.png
 Gui, Add, Picture, x2 y140 +Background, Resources/Background.png
 IniRead, GUIArguments, Config.ini, LC, Arguments
 Gui, Tab, 1
